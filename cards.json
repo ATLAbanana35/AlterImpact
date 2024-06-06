@@ -1,0 +1,122 @@
+{
+  "atal_enemy": {
+    "name": "Atal Enemy",
+    "force": 30,
+    "life": 200,
+    "reload": 1000,
+    "reloadMax": 5,
+    "class": "Diamond",
+    "specialAttackId": "SA_00001",
+    "html": "<div\r\n data-id=\"atal_enemy//8427\"\r\n class=\"card userCard bankCard\"\r\n data-life=\"200\"\r\n >\r\n <div class=\"imgContainer\">\r\n <img src=\"./assets/hero_atal_enemy.jpg\" alt=\"Hero\" />\r\n <progress max=\"200\" value=\"200\" min=\"0\"></progress>\r\n </div>\r\n <div class=\"cardBody\">\r\n <br />\r\n <br />\r\n <br />\r\n <h1>Atal Enemy</h1>\r\n <h3>\r\n Attack enemy (5X 30 HP, in 5s), and heal 20 HP for all your cards\r\n </h3>\r\n <button class=\"AttackButton\">Attack!</button>\r\n Then Click Attack When The progress is in middle\r\n </div>\r\n </div>"
+  },
+  "ultimate_hero": {
+    "name": "Ultimate Hero",
+    "force": 100,
+    "life": 80,
+    "reload": 5000,
+    "reloadMax": 2,
+    "class": "Diamond",
+    "specialAttackId": "SA_00002",
+    "html": "<div\r\n data-id=\"ultimate_hero//8917\"\r\n class=\"card userCard bankCard\"\r\n data-life=\"80\"\r\n >\r\n <div class=\"imgContainer\">\r\n <img src=\"./assets/hero_ultimate_hero.jpg\" alt=\"Hero\" />\r\n <progress max=\"80\" value=\"80\" min=\"0\"></progress>\r\n </div>\r\n <div class=\"cardBody\">\r\n <br />\r\n <br />\r\n <br />\r\n <h1>Ultimate Enemy</h1>\r\n <h3>\r\n Attack enemy (2X 100 HP, in 10s), and remove 10 HP from all enemy\r\n </h3>\r\n <button class=\"AttackButton\">Attack!</button>\r\n Then Click Attack When The progress is in middle\r\n </div>\r\n </div>"
+  },
+  "basic_hero": {
+    "name": "Basic Hero",
+    "force": 10,
+    "life": 70,
+    "reload": 500,
+    "reloadMax": 10,
+    "class": "Diamond",
+    "specialAttackId": "SA_00003",
+    "html": "<div\r\n data-id=\"basic_hero//7927\"\r\n class=\"card userCard bankCard\"\r\n data-life=\"70\"\r\n >\r\n <div class=\"imgContainer\">\r\n <img src=\"./assets/hero_basic_hero.jpg\" alt=\"Hero\" />\r\n <progress max=\"100\" value=\"100\" min=\"0\"></progress>\r\n </div>\r\n <div class=\"cardBody\">\r\n <br />\r\n <br />\r\n <br />\r\n <h1>Basic Hero</h1>\r\n <h3>\r\n Attack enemy (10 10 HP, in 5s), and remove 20 HP from an enemy\r\n </h3>\r\n <button class=\"AttackButton\">Attack!</button>\r\n Then Click Attack When The progress is in middle\r\n </div>\r\n </div>"
+  },
+  "power_hero": {
+    "name": "Power Hero",
+    "force": 30,
+    "life": 20,
+    "reload": 1000,
+    "reloadMax": 2,
+    "class": "noob",
+    "specialAttackId": "SA_00005",
+    "html": "<div\r\n data-id=\"power_hero//3234\"\r\n class=\"card userCard bankCard\"\r\n data-life=\"20\"\r\n >\r\n <div class=\"imgContainer\">\r\n <img src=\"./assets/hero_power_hero.jpg\" width=\"200\" alt=\"Hero\" />\r\n <progress max=\"20\" value=\"20\" min=\"0\"></progress>\r\n </div>\r\n <div class=\"cardBody\">\r\n <br />\r\n <br />\r\n <br />\r\n <h1>Power Hero</h1>\r\n <h3>\r\n Attack enemy (2X 30 HP, in 2s), and heal himself to 50 HP for 5s\r\n </h3>\r\n <button class=\"AttackButton\">Attack!</button>\r\n Then Click Attack When The progress is in middle\r\n </div>\r\n </div>"
+  },
+  "ultra_power_hero": {
+    "name": "Power Hero",
+    "force": 60,
+    "life": 40,
+    "reload": 2000,
+    "reloadMax": 2,
+    "class": "Silver",
+    "specialAttackId": "SA_00089",
+    "html": "<div\r\n data-id=\"ultra_power_hero//3234\"\r\n class=\"card userCard bankCard\"\r\n data-life=\"40\"\r\n >\r\n <div class=\"imgContainer\">\r\n <img src=\"./assets/hero_ultra_power_hero.jpg\" width=\"200\" alt=\"Hero\" />\r\n <progress max=\"40\" value=\"40\" min=\"0\"></progress>\r\n </div>\r\n <div class=\"cardBody\">\r\n <br />\r\n <br />\r\n <br />\r\n <h1>Ultra Power Hero</h1>\r\n <h3>\r\n Attack enemy (2X 60 HP, in 4s), and heal himself to 100 HP for 5s\r\n </h3>\r\n <button class=\"AttackButton\">Attack!</button>\r\n Then Click Attack When The progress is in middle\r\n </div>\r\n </div>"
+  },
+  "baby_atal": {
+    "name": "Baby Atal",
+    "force": 6,
+    "life": 40,
+    "reload": 1000,
+    "reloadMax": 5,
+    "class": "noob",
+    "specialAttackId": "SA_00006",
+    "html": "<div\r\n data-id=\"baby_atal//43246\"\r\n class=\"card userCard bankCard\"\r\n data-life=\"40\"\r\n >\r\n <div class=\"imgContainer\">\r\n <img src=\"./assets/hero_baby_atal.jpg\" alt=\"Hero\" />\r\n <progress max=\"40\" value=\"40\" min=\"0\"></progress>\r\n </div>\r\n <div class=\"cardBody\">\r\n <br />\r\n <br />\r\n <br />\r\n <h1>Baby Atal</h1>\r\n <h3>\r\n Attack enemy (5X 6 HP, in 5s), and heal 4 hp for all your cards\r\n </h3>\r\n <button class=\"AttackButton\">Attack!</button>\r\n Then Click Attack When The progress is in middle\r\n </div>\r\n </div>"
+  },
+  "bronze_hero": {
+    "name": "Bronze Hero",
+    "force": 10,
+    "life": 40,
+    "reload": 1000,
+    "reloadMax": 5,
+    "class": "Bronze",
+    "specialAttackId": "SA_00003",
+    "html": "<div\r\n data-id=\"bronze_hero//43246\"\r\n class=\"card userCard bankCard\"\r\n data-life=\"100\"\r\n >\r\n <div class=\"imgContainer\">\r\n <img src=\"./assets/hero_bronze_hero.jpg\" alt=\"Hero\" />\r\n <progress max=\"40\" value=\"40\" min=\"0\"></progress>\r\n </div>\r\n <div class=\"cardBody\">\r\n <br />\r\n <br />\r\n <br />\r\n <h1>Bronze Hero</h1>\r\n <h3>\r\n Attack enemy (5X 10 HP, in 5s), and remove 20 HP from an enemy\r\n </h3>\r\n <button class=\"AttackButton\">Attack!</button>\r\n Then Click Attack When The progress is in middle\r\n </div>\r\n </div>"
+  },
+  "silver_hero": {
+    "name": "Bronze Hero",
+    "force": 20,
+    "life": 80,
+    "reload": 500,
+    "reloadMax": 10,
+    "class": "Silver",
+    "specialAttackId": "SA_00003",
+    "html": "<div\r\n data-id=\"silver_hero//43246\"\r\n class=\"card userCard bankCard\"\r\n data-life=\"100\"\r\n >\r\n <div class=\"imgContainer\">\r\n <img src=\"./assets/hero_silver_hero.jpg\" alt=\"Hero\" />\r\n <progress max=\"80\" value=\"80\" min=\"0\"></progress>\r\n </div>\r\n <div class=\"cardBody\">\r\n <br />\r\n <br />\r\n <br />\r\n <h1>Silver Hero</h1>\r\n <h3>\r\n Attack enemy (10X 20 HP, in 2.5s), and remove 20 HP from an enemy\r\n </h3>\r\n <button class=\"AttackButton\">Attack!</button>\r\n Then Click Attack When The progress is in middle\r\n </div>\r\n </div>"
+  },
+  "diamond_hero": {
+    "name": "Diamond Hero",
+    "force": 40,
+    "life": 140,
+    "reload": 250,
+    "reloadMax": 5,
+    "class": "Diamond",
+    "specialAttackId": "SA_00003",
+    "html": "<div\r\n data-id=\"diamond_hero//43246\"\r\n class=\"card userCard bankCard\"\r\n data-life=\"140\"\r\n >\r\n <div class=\"imgContainer\">\r\n <img src=\"./assets/hero_diamond_hero.jpg\" alt=\"Hero\" />\r\n <progress max=\"140\" value=\"140\" min=\"0\"></progress>\r\n </div>\r\n <div class=\"cardBody\">\r\n <br />\r\n <br />\r\n <br />\r\n <h1>Diamond Hero</h1>\r\n <h3>\r\n Attack enemy (5X 40 HP, in 1.24s), and remove 20 HP from an enemy\r\n </h3>\r\n <button class=\"AttackButton\">Attack!</button>\r\n Then Click Attack When The progress is in middle\r\n </div>\r\n </div>"
+  },
+  "legend_hero": {
+    "name": "Legend Hero",
+    "force": 80,
+    "life": 280,
+    "reload": 100,
+    "reloadMax": 10,
+    "class": "Legend",
+    "specialAttackId": "SA_ULTIMATE",
+    "html": "<div\r\n data-id=\"legend_hero//43246\"\r\n class=\"card userCard bankCard\"\r\n data-life=\"280\"\r\n >\r\n <div class=\"imgContainer\">\r\n <img src=\"./assets/hero_legend_hero.jpg\" width=\"200\" alt=\"Hero\" />\r\n <progress max=\"280\" value=\"280\" min=\"0\"></progress>\r\n </div>\r\n <div class=\"cardBody\">\r\n <br />\r\n <br />\r\n <br />\r\n <h1>LEGEND Hero</h1>\r\n <h3>\r\n Attack enemy (10X 80 HP, in 1s), and remove 100 HP from an enemy\r\n </h3>\r\n <button class=\"AttackButton\">Attack!</button>\r\n Then Click Attack When The progress is in middle\r\n </div>\r\n </div>"
+  },
+  "noob_hero": {
+    "name": "Noob Hero",
+    "force": 5,
+    "life": 40,
+    "reload": 100,
+    "reloadMax": 5,
+    "class": "noob",
+    "specialAttackId": "SA_00004",
+    "html": "<div\r\n data-id=\"noob_hero//67321\"\r\n class=\"card userCard bankCard\"\r\n data-life=\"40\"\r\n >\r\n <div class=\"imgContainer\">\r\n <img src=\"./assets/hero_noob_hero.jpg\" width=\"200\" alt=\"Hero Image\" />\r\n <progress max=\"40\" value=\"40\" min=\"0\"></progress>\r\n </div>\r\n <div class=\"cardBody\">\r\n <br />\r\n <br />\r\n <br />\r\n <h1>Noob Hero</h1>\r\n <h3>\r\n Attack enemy (5X 5 HP, in 0.5s), and make 1 hp to all enemy\r\n </h3>\r\n <button class=\"AttackButton\">Attack!</button>\r\n Then Click Attack When The progress is in middle\r\n </div>\r\n </div>"
+  },
+  "medium_hero": {
+    "name": "Medium Hero",
+    "force": 15,
+    "life": 120,
+    "reload": 25,
+    "reloadMax": 5,
+    "class": "Silver",
+    "specialAttackId": "SA_00088",
+    "html": "<div\r\n data-id=\"medium_hero//67321\"\r\n class=\"card userCard bankCard\"\r\n data-life=\"120\"\r\n >\r\n <div class=\"imgContainer\">\r\n <img src=\"./assets/hero_medium_hero.jpg\" width=\"200\" alt=\"Hero Image\" />\r\n <progress max=\"120\" value=\"120\" min=\"0\"></progress>\r\n </div>\r\n <div class=\"cardBody\">\r\n <br />\r\n <br />\r\n <br />\r\n <h1>Medium Hero</h1>\r\n <h3>\r\n Attack enemy (5X 15 HP, in 1.25s), and make 10 hp to all enemy\r\n </h3>\r\n <button class=\"AttackButton\">Attack!</button>\r\n Then Click Attack When The progress is in middle\r\n </div>\r\n </div>"
+  }
+}

@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlterImpact, frame 1!</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=VT323"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/animejs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="64"
+      height="64"
+      fill="white"
+      class="bi bi-sliders"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"
+      />
+    </svg>
+    <div class="pieces">10'000 🪙</div>
+    <div class="throphee">200 🏆</div>
+    <div class="pis"></div>
+    <div class="ths"></div>
+    <div id="confetti-container"></div>
+    <h1 class="dn">Félicitations, vous avez gagné !</h1>
+    <p class="ldn">YOU LOOSE :(</p>
+    <div class="multiplayer-btn" href=""></div>
+    <h5 class="m-pl">MULTIPLAYER</h5>
+    <div class="play-btn" href=""></div>
+    <h1 class="pl">PLAY</h1>
+    <h1 class="rank">RANK : <span class="rsp"></span></h1>
+    <div class="boxContainer">
+      <h1 class="boxCSS box">
+        100 🪙<img src="./box.png" alt="BoxImage" width="100" />
+      </h1>
+      <h1 class="boxCSS ultra_box">
+        500 🪙<img src="./ultra_box.png" alt="BoxImage" width="100" />
+      </h1>
+      <h1 class="boxCSS legend_box">
+        1000 🪙<img src="./legend_box.png" alt="BoxImage" width="100" />
+      </h1>
+    </div>
+    <style>
+      .boxContainer {
+        position: absolute;
+        left: 100px;
+        bottom: 100px;
+      }
+      .boxCSS {
+        height: 20vh;
+        left: 100px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        background: rgb(138, 129, 0);
+        position: relative;
+        background: linear-gradient(
+          146deg,
+          rgba(138, 129, 0, 1) 0%,
+          rgba(255, 252, 0, 1) 35%,
+          rgba(171, 169, 0, 1) 63%,
+          rgba(255, 239, 0, 1) 100%
+        );
+        z-index: 1;
+        bottom: 0px;
+        border: 5px solid gold;
+        border-radius: 40px;
+        overflow: hidden;
+        transition: 1s;
+      }
+      .boxCSS:hover::before {
+        opacity: 1;
+      }
+
+      .boxCSS::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(
+          146deg,
+          rgba(255, 252, 0, 1) 0%,
+          rgba(138, 129, 0, 1) 35%,
+          rgba(255, 239, 0, 1) 63%,
+          rgba(171, 169, 0, 1) 100%
+        );
+        z-index: -1;
+        transition: opacity 0.5s linear;
+        opacity: 0;
+      }
+
+      .pl {
+        color: rgba(255, 0, 128, 0.8);
+        position: absolute;
+        bottom: 200px;
+        right: 250px;
+        z-index: -1;
+        transform: translate(150px);
+        transition: all 0.4s ease;
+      }
+      .play-btn:hover ~ .pl {
+        transform: translate(0);
+      }
+
+      .play-btn {
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(
+          rgba(255, 0, 128, 1) 60%,
+          rgba(255, 255, 255, 1) 62%
+        );
+        border-radius: 50%;
+        position: absolute;
+        display: block;
+        margin: 100px auto;
+        box-shadow: 0px 0px 25px 3px rgba(255, 0, 128, 0.8);
+        bottom: 100px;
+        right: 100px;
+      }
+
+      /* triangle */
+      .play-btn::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translateX(-40%) translateY(-50%);
+        transform: translateX(-40%) translateY(-50%);
+        transform-origin: center center;
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 25px solid #fff;
+        z-index: 100;
+        -webkit-transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+
+      /* pulse wave */
+      .play-btn:before {
+        content: "";
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s;
+        -webkit-animation: pulsate1 2s;
+        animation: pulsate1 2s;
+        -webkit-animation-direction: forwards;
+        animation-direction: forwards;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-timing-function: steps;
+        animation-timing-function: steps;
+        opacity: 1;
+        border-radius: 50%;
+        border: 5px solid rgba(255, 255, 255, 0.75);
+        top: -30%;
+        left: -30%;
+        background: rgba(198, 16, 0, 0);
+      }
+      .m-pl {
+        color: rgba(255, 0, 128, 0.8);
+        position: absolute;
+        bottom: 200px;
+        right: 600px;
+        z-index: -1;
+        transform: translate(150px);
+        transition: all 0.4s ease;
+      }
+      .multiplayer-btn:hover ~ .m-pl {
+        transform: translate(0);
+      }
+
+      .multiplayer-btn {
+        cursor: pointer;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(
+          rgba(255, 0, 128, 1) 60%,
+          rgba(255, 255, 255, 1) 62%
+        );
+        border-radius: 50%;
+        position: absolute;
+        display: block;
+        margin: 100px auto;
+        box-shadow: 0px 0px 25px 3px rgba(255, 0, 128, 0.8);
+        bottom: 100px;
+        right: 450px;
+      }
+
+      /* triangle */
+      .multiplayer-btn::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translateX(-40%) translateY(-50%);
+        transform: translateX(-40%) translateY(-50%);
+        transform-origin: center center;
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 25px solid #fff;
+        z-index: 100;
+        -webkit-transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+
+      /* pulse wave */
+      .multiplayer-btn:before {
+        content: "";
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s;
+        -webkit-animation: pulsate1 2s;
+        animation: pulsate1 2s;
+        -webkit-animation-direction: forwards;
+        animation-direction: forwards;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-timing-function: steps;
+        animation-timing-function: steps;
+        opacity: 1;
+        border-radius: 50%;
+        border: 5px solid rgba(255, 255, 255, 0.75);
+        top: -30%;
+        left: -30%;
+        background: rgba(198, 16, 0, 0);
+      }
+
+      @-webkit-keyframes pulsate1 {
+        0% {
+          -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+          opacity: 1;
+          box-shadow: inset 0px 0px 25px 3px rgba(255, 255, 255, 0.75),
+            0px 0px 25px 10px rgba(255, 255, 255, 0.75);
+        }
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          opacity: 0;
+          box-shadow: none;
+        }
+      }
+
+      @keyframes pulsate1 {
+        0% {
+          -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+          opacity: 1;
+          box-shadow: inset 0px 0px 25px 3px rgba(255, 255, 255, 0.75),
+            0px 0px 25px 10px rgba(255, 255, 255, 0.75);
+        }
+        100% {
+          -webkit-transform: scale(1, 1);
+          transform: scale(1);
+          opacity: 0;
+          box-shadow: none;
+        }
+      }
+      html {
+        background: #444;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+      }
+      .throphee {
+        font-size: 150%;
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 10vw;
+        right: 0;
+        position: fixed;
+        top: 0;
+        height: 5vh;
+        background-color: dimgrey;
+        border-radius: 20px;
+        box-shadow: inset 0px 0px 2px 0px;
+      }
+      .pieces {
+        font-size: 150%;
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 10vw;
+        left: 0;
+        position: fixed;
+        top: 0;
+        height: 5vh;
+        background-color: dimgrey;
+        border-radius: 20px;
+        box-shadow: inset 0px 0px 2px 0px;
+      }
+      .pi {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+        animation: 3s piAnim forwards;
+      }
+      .th {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        animation: 3s thAnim forwards;
+      }
+      @keyframes piAnim {
+        0% {
+          top: 50%;
+          left: 50%;
+        }
+        75% {
+          top: 50px;
+          left: 50px;
+          display: block;
+        }
+        100% {
+          top: 50px;
+          left: 50px;
+          display: none;
+        }
+      }
+      @keyframes thAnim {
+        0% {
+          top: 50%;
+          right: 50%;
+        }
+        75% {
+          top: 50px;
+          right: 50px;
+          display: block;
+        }
+        100% {
+          top: 50px;
+          right: 50px;
+          display: none;
+        }
+      }
+      #confetti-container {
+        display: none;
+      }
+      .dn {
+        display: none;
+      }
+      p {
+        font-family: "VT323";
+        font-size: 8em;
+        text-align: center;
+        animation-name: example;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
+      @keyframes example {
+        0% {
+          color: lime;
+          text-shadow: 0 0 20px green;
+        }
+        25% {
+          color: green;
+          text-shadow: 2px 2px 2px lime;
+          transform: translate(-2px, 1px);
+        }
+        40% {
+          color: lime;
+          text-shadow: none;
+          transform: translate(0, 0);
+        }
+        50% {
+          color: green;
+          text-shadow: 5px 5px 2px blue, -5px -5px 2px red;
+          transform: translate(0px, 5px);
+        }
+        70% {
+          color: lime;
+          text-shadow: none;
+          transform: translate(0, 0);
+        }
+        80% {
+          color: lime;
+          text-shadow: 0 0 20px green;
+          transform: translate(-2px, 1px);
+        }
+        100% {
+          color: lime;
+          text-shadow: none;
+        }
+      }
+      .ldn {
+        display: none;
+      }
+      @media (pointer: none), (pointer: coarse) {
+        .pieces {
+          width: 40%;
+        }
+        .throphee {
+          width: 40%;
+        }
+        .boxContainer {
+          left: 0;
+          top: 100vh;
+        }
+        .rank {
+          position: absolute;
+          top: 10%;
+        }
+        .multiplayer-btn {
+          left: 0;
+          top: 60vh;
+        }
+        .play-btn {
+          right: 10%;
+          top: 60vh;
+        }
+        .m-pl {
+          position: absolute;
+          left: 0%;
+          transform: none;
+          top: 55vh;
+        }
+        .pl {
+          position: absolute;
+          right: 10%;
+          transform: none;
+          top: 55vh;
+        }
+      }
+      @media screen and (max-width: 1000px) {
+        .pieces {
+          width: 40%;
+        }
+        .throphee {
+          width: 40%;
+        }
+        .boxContainer {
+          left: 0;
+          top: 100vh;
+        }
+        .rank {
+          position: absolute;
+          top: 10%;
+        }
+        .multiplayer-btn {
+          left: 0;
+          top: 60vh;
+        }
+        .play-btn {
+          right: 10%;
+          top: 60vh;
+        }
+        .m-pl {
+          position: absolute;
+          left: 0%;
+          transform: none;
+          top: 55vh;
+        }
+        .pl {
+          position: absolute;
+          right: 10%;
+          transform: none;
+          top: 55vh;
+        }
+      }
+      @media screen and (max-height: 1000px) {
+        .pieces {
+          width: 40%;
+        }
+        .throphee {
+          width: 40%;
+        }
+        .boxContainer {
+          left: 0;
+          top: 100vh;
+        }
+        .rank {
+          position: absolute;
+          top: 10%;
+        }
+        .multiplayer-btn {
+          left: 0;
+          top: 60vh;
+        }
+        .play-btn {
+          right: 10%;
+          top: 60vh;
+        }
+        .m-pl {
+          position: absolute;
+          left: 0%;
+          transform: none;
+          top: 55vh;
+        }
+        .pl {
+          position: absolute;
+          right: 10%;
+          transform: none;
+          top: 55vh;
+        }
+      }
+    </style>
+    <script>
+      let pie = localStorage.getItem("pieces");
+      let throphee = localStorage.getItem("thorphees");
+      if (!localStorage.getItem("UserName")) {
+        Swal.fire({
+          title: "Enter your username",
+          input: "text",
+          inputLabel: "UserName",
+          showCancelButton: false,
+          inputValidator: (value) => {
+            if (!value) {
+              return "You need to write something!";
+            }
+          },
+        }).then((r) => {
+          if (r.value) {
+            localStorage.setItem("UserName", r.value);
+          }
+        });
+      }
+      if (pie === null) {
+        pie = 10;
+      } else {
+        pie = parseInt(pie);
+      }
+      if (throphee === null) {
+        throphee = 0;
+      } else {
+        throphee = parseInt(throphee);
+      }
+      document.querySelector(".rsp").textContent = "Bronze 1, Next : 50 🏆";
+      document.querySelector(".rank").style.color = "rgb(118,79,34)";
+      let rank = 1;
+      if (throphee >= 50 && throphee < 100) {
+        rank = 2;
+        document.querySelector(".rsp").textContent = "Bronze 2, Next : 100 🏆";
+        document.querySelector(".rank").style.color = "rgb(118,79,34)";
+      } else if (throphee >= 100 && throphee < 200) {
+        document.querySelector(".rsp").textContent = "Bronze 3, Next : 200 🏆";
+        document.querySelector(".rank").style.color = "rgb(118,79,34)";
+        rank = 3;
+      } else if (throphee >= 200 && throphee < 350) {
+        document.querySelector(".rank").style.color = "#2d2e2d";
+        document.querySelector(".rsp").textContent = "Silver 1, Next : 350 🏆";
+        rank = 4;
+      } else if (throphee >= 350 && throphee < 600) {
+        document.querySelector(".rank").style.color = "#2d2e2d";
+        document.querySelector(".rsp").textContent = "Silver 2, Next : 600 🏆";
+        rank = 5;
+      } else if (throphee >= 600 && throphee < 700) {
+        document.querySelector(".rank").style.color = "#2d2e2d";
+        document.querySelector(".rsp").textContent = "Silver 3, Next : 700 🏆";
+        rank = 6;
+      } else if (throphee >= 700 && throphee < 850) {
+        document.querySelector(".rank").style.color = "rgb(33,172,254)";
+        document.querySelector(".rsp").textContent =
+          "Champions 1, Next : 850 🏆";
+        rank = 7;
+      } else if (throphee >= 850 && throphee < 900) {
+        document.querySelector(".rank").style.color = "rgb(33,172,254)";
+        document.querySelector(".rsp").textContent =
+          "Champions 2, Next : 900 🏆";
+        rank = 8;
+      } else if (throphee >= 900) {
+        document.querySelector(".rank").style.color = "rgb(255,17,68)";
+        document.querySelector(".rsp").textContent =
+          "Legend, YOU FINISHED THE GAME!";
+        rank = 9;
+      }
+      document.querySelector(".play-btn").addEventListener("click", () => {
+        const partycode = parseInt(Math.random() * 10000).toString();
+        const loc = "play.html?p=" + partycode + "&d=" + rank.toString();
+        const ClickAudio = new Audio("./assets/buttonPress.mp3");
+        ClickAudio.play();
+        Swal.fire({
+          title: "Moving to new server",
+          html:
+            "Task: move to server with id:" +
+            partycode +
+            " in <b></b> milliseconds",
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+              timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          },
+        }).then(() => {
+          location.href = loc;
+        });
+      });
+      document
+        .querySelector(".multiplayer-btn")
+        .addEventListener("click", () => {
+          Swal.fire({
+            title: "Do you want to create a party or enter with code?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Create party",
+            denyButtonText: "Join with code",
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (!result.isConfirmed) {
+              Swal.fire({
+                title: "Enter party code",
+                input: "number",
+                inputLabel: "Party Code",
+                showCancelButton: false,
+                inputValidator: (value) => {
+                  if (!value) {
+                    return "You need to write something!";
+                  }
+                },
+              }).then((r) => {
+                if (r.value) {
+                  const JoinXML = new XMLHttpRequest();
+                  JoinXML.open(
+                    "GET",
+                    "api/action.php?command=joinParty&time=" +
+                      encodeURIComponent(parseInt(Date.now())) +
+                      "&id=" +
+                      encodeURIComponent(r.value) +
+                      "&u=" +
+                      encodeURIComponent(localStorage.getItem("UserName"))
+                  );
+                  JoinXML.onload = () => {
+                    if (JoinXML.responseText.includes("Success")) {
+                      Swal.fire({
+                        title: "Entering room",
+                        title: "All OK",
+                      });
+                      localStorage.setItem(
+                        "EnemyName",
+                        JoinXML.responseText.split("//")[0]
+                      );
+                      location.href =
+                        "multiplayer.html?p=" +
+                        r.value +
+                        "&d=" +
+                        JoinXML.responseText.split("//")[2];
+                    } else {
+                      Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text:
+                          "Something went wrong! (Server response : " +
+                          JoinXML.responseText +
+                          ")",
+                      });
+                    }
+                  };
+                  JoinXML.send();
+                }
+              });
+            } else if (result.isConfirmed) {
+              let timerInterval;
+              Swal.fire({
+                title: "Enter difficulty",
+                input: "number",
+                inputLabel: "1 to 9",
+                showCancelButton: false,
+                inputValidator: (value) => {
+                  if (!value) {
+                    return "You need to write something!";
+                  }
+                },
+              }).then((res) => {
+                Swal.fire({
+                  title: "Creating party!",
+                  html: "Will create party in <b></b> milliseconds.",
+                  timer: 2000,
+                  timerProgressBar: true,
+                  didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                      timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                  },
+                  willClose: () => {
+                    clearInterval(timerInterval);
+                  },
+                }).then((result) => {
+                  /* Read more about handling dismissals below */
+                  if (result.dismiss === Swal.DismissReason.timer) {
+                    Swal.fire({
+                      title: "Creating room",
+                      text: "Sending Request...",
+                      timer: 1000,
+                    }).then(() => {
+                      const CreateRoomXML = new XMLHttpRequest();
+                      const partyCode = parseInt(Math.random() * 10000);
+                      CreateRoomXML.open(
+                        "GET",
+                        "api/action.php?command=initParty&d=" +
+                          String(res.value) +
+                          "&time=" +
+                          parseInt(Date.now()).toString() +
+                          "&id=" +
+                          partyCode.toString() +
+                          "&u=" +
+                          localStorage.getItem("UserName")
+                      );
+                      CreateRoomXML.onload = () => {
+                        Swal.fire({
+                          title: "Watiting for user join",
+                          text: "Party code : " + partyCode.toString() + "...",
+                        });
+                        setInterval(() => {
+                          const textXML = new XMLHttpRequest();
+                          textXML.open(
+                            "GET",
+                            "api/tmp/game_" + partyCode.toString() + ".json"
+                          );
+                          textXML.onload = () => {
+                            const isJson = (str) => {
+                              try {
+                                JSON.parse(str);
+                              } catch (e) {
+                                return false;
+                              }
+
+                              return true;
+                            };
+                            if (isJson(textXML.responseText)) {
+                              for (const player in JSON.parse(
+                                textXML.responseText
+                              )) {
+                                if (
+                                  Object.hasOwnProperty.call(
+                                    JSON.parse(textXML.responseText),
+                                    player
+                                  )
+                                ) {
+                                  const element = JSON.parse(
+                                    textXML.responseText
+                                  )[player];
+                                  if (
+                                    player !== "GameData" &&
+                                    player !== localStorage.getItem("UserName")
+                                  ) {
+                                    localStorage.setItem("EnemyName", player);
+                                  }
+                                }
+                              }
+
+                              Swal.fire({
+                                title: "Entering Game",
+                                text: "Player : Lyam founded",
+                                timer: 1000,
+                              }).then(() => {
+                                location.href =
+                                  "multiplayer.html?p=" +
+                                  partyCode +
+                                  "&d=" +
+                                  res.value;
+                              });
+                            }
+                          };
+                          textXML.send();
+                        }, 1000);
+                      };
+                      CreateRoomXML.send();
+                    });
+                  }
+                });
+              });
+            }
+          });
+        });
+      function save() {
+        localStorage.setItem("pieces", pie.toString());
+        localStorage.setItem("thorphees", throphee.toString());
+      }
+      save();
+      function updateAll() {
+        document.querySelector(".pieces").innerHTML = `${pie} 🪙`;
+        document.querySelector(".throphee").innerHTML = `${throphee} 🏆`;
+        save();
+      }
+      updateAll();
+      function animatePieces(number) {
+        let i = 0;
+        let num = number;
+        if (number < 0) {
+          num = -number;
+        }
+        const i2 = setInterval(() => {
+          i++;
+          if (i > num) {
+            clearInterval(i2);
+          } else {
+            const span = document.createElement("span");
+            span.classList.add("pi");
+            span.textContent = "🪙";
+            document.querySelector(".pis").appendChild(span);
+            setTimeout(() => {
+              if (number < 0) {
+                pie--;
+              } else {
+                pie++;
+              }
+              updateAll();
+            }, 2000);
+            if (number < 0) {
+              span.style.animationDirection = "reverse";
+            }
+          }
+        }, 10);
+      }
+      function animateTrochee(number) {
+        let i = 0;
+        let num = number;
+        if (number < 0) {
+          num = -number;
+        }
+        const i2 = setInterval(() => {
+          i++;
+          if (i > num) {
+            clearInterval(i2);
+          } else {
+            const span = document.createElement("span");
+            span.classList.add("th");
+            span.textContent = "🏆";
+            document.querySelector(".ths").appendChild(span);
+            setTimeout(() => {
+              if (number < 0) {
+                throphee--;
+              } else {
+                throphee++;
+              }
+              updateAll();
+            }, 2000);
+            if (number < 0) {
+              span.style.animationDirection = "reverse";
+            }
+          }
+        }, 10);
+      }
+      function showWin() {
+        document.querySelector("#confetti-container").style.display = "block";
+        document.querySelector(".dn").style.display = "block";
+        const confettiContainer = document.getElementById("confetti-container");
+
+        function createConfetti() {
+          const duration = 3000; // Durée de l'animation en millisecondes
+          const animation = anime({
+            targets: confettiContainer,
+            rotate: "720deg",
+            easing: "easeInOutQuad",
+            duration: duration,
+          });
+
+          // Lancer les confettis
+          const end = Date.now() + duration;
+          (function frame() {
+            confettiContainer.innerHTML = "";
+            confetti({
+              particleCount: 3,
+              spread: 70,
+              origin: { y: 0.6 },
+            });
+            if (Date.now() < end) {
+              requestAnimationFrame(frame);
+            }
+          })();
+        }
+        createConfetti();
+      }
+      var parts = window.location.search.substr(1).split("&");
+      var $_GET = {};
+      for (var i = 0; i < parts.length; i++) {
+        var temp = parts[i].split("=");
+        $_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
+      }
+      if ($_GET["win"]) {
+        setTimeout(() => {
+          showWin();
+          animatePieces(parseInt($_GET["pi"]));
+          animateTrochee(parseInt($_GET["th"]));
+        }, 1000);
+      } else if ($_GET["equal"]) {
+        document.querySelector(".ldn").innerHTML = "Ex Æquo";
+        document.querySelector(".ldn").style.display = "block";
+        animatePieces(parseInt($_GET["pi"]));
+        animateTrochee(parseInt($_GET["th"]));
+      } else if ($_GET["loose"]) {
+        document.querySelector(".ldn").style.display = "block";
+        animatePieces(parseInt($_GET["pi"]));
+        animateTrochee(parseInt($_GET["th"]));
+      }
+      document.querySelector(".box").addEventListener("click", () => {
+        if (pie >= 100) {
+          pie -= 100;
+          save();
+          updateAll();
+          let t = "";
+          let n = 0;
+          const random = parseInt(Math.random() * 100);
+          let AllHeroes = localStorage.getItem("AllHeroes");
+          if (!AllHeroes) {
+            AllHeroes = ["noob_hero", "power_hero", "baby_atal"];
+            localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+          } else {
+            AllHeroes = JSON.parse(AllHeroes);
+          }
+          if (random < 70) {
+            t = "piece";
+            n = parseInt(Math.random() * 100);
+            pie += n;
+            save();
+          } else if (random > 85) {
+            t = "trophee";
+            n = 2 + parseInt(Math.random() * 2);
+            throphee += n;
+            save();
+          } else {
+            console.log("Piece1");
+            if (rank > 0 && rank < 3) {
+              const rand = parseInt(Math.random() * 100);
+              console.log(rand);
+              if (!AllHeroes.includes("bronze_hero")) {
+                AllHeroes.push("bronze_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//bronze_hero";
+                n = 1;
+              } else {
+                t = "piece";
+                n = parseInt(Math.random() * 100);
+              }
+            } else if (rank > 3 && rank < 6) {
+              const rand = parseInt(Math.random() * 100);
+              if (rand < 25 && !AllHeroes.includes("bronze_hero")) {
+                AllHeroes.push("bronze_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//bronze_hero";
+                n = 1;
+              } else if (
+                rand > 25 &&
+                rand < 50 &&
+                !AllHeroes.includes("silver_hero")
+              ) {
+                AllHeroes.push("silver_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//silver_hero";
+                n = 1;
+              }
+              if (
+                rand > 50 &&
+                rand < 75 &&
+                !AllHeroes.includes("ultra_power_hero")
+              ) {
+                AllHeroes.push("ultra_power_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//ultra_power_hero";
+                n = 1;
+              } else if (
+                rand > 75 &&
+                rand < 100 &&
+                !AllHeroes.includes("medium_hero")
+              ) {
+                AllHeroes.push("medium_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//medium_hero";
+                n = 1;
+              } else {
+                t = "piece";
+                n = parseInt(Math.random() * 100);
+              }
+            } else if (rank > 6 && rank < 9) {
+              const rand = parseInt(Math.random() * 100);
+              if (rand < 12.5 && !AllHeroes.includes("bronze_hero")) {
+                AllHeroes.push("bronze_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//bronze_hero";
+                n = 1;
+              } else if (
+                rand > 12.5 &&
+                rand < 25 &&
+                !AllHeroes.includes("silver_hero")
+              ) {
+                AllHeroes.push("silver_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//silver_hero";
+                n = 1;
+              }
+              if (
+                rand > 25 &&
+                rand < 37.5 &&
+                !AllHeroes.includes("ultra_power_hero")
+              ) {
+                AllHeroes.push("ultra_power_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//ultra_power_hero";
+                n = 1;
+              } else if (
+                rand > 37.5 &&
+                rand < 50 &&
+                !AllHeroes.includes("medium_hero")
+              ) {
+                AllHeroes.push("medium_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//medium_hero";
+                n = 1;
+              } else if (
+                rand > 50 &&
+                rand < 62.5 &&
+                !AllHeroes.includes("atal_enemy")
+              ) {
+                AllHeroes.push("atal_enemy");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//atal_enemy";
+                n = 1;
+              } else if (
+                rand > 62.5 &&
+                rand < 75 &&
+                !AllHeroes.includes("ultimate_hero")
+              ) {
+                AllHeroes.push("ultimate_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//ultimate_hero";
+                n = 1;
+              } else if (
+                rand > 75 &&
+                rand < 87.5 &&
+                !AllHeroes.includes("basic_hero")
+              ) {
+                AllHeroes.push("basic_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//basic_hero";
+                n = 1;
+              } else if (
+                rand > 87.5 &&
+                rand < 100 &&
+                !AllHeroes.includes("diamond_hero")
+              ) {
+                AllHeroes.push("diamond_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//diamond_hero";
+                n = 1;
+              } else {
+                t = "piece";
+                n = parseInt(Math.random() * 100);
+              }
+            } else if (rank > 8) {
+              const rand = parseInt(Math.random() * 100);
+              if (rand < 11 && !AllHeroes.includes("bronze_hero")) {
+                AllHeroes.push("bronze_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//bronze_hero";
+                n = 1;
+              } else if (
+                rand > 11 &&
+                rand < 22 &&
+                !AllHeroes.includes("silver_hero")
+              ) {
+                AllHeroes.push("silver_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//silver_hero";
+                n = 1;
+              }
+              if (
+                rand > 22 &&
+                rand < 33 &&
+                !AllHeroes.includes("ultra_power_hero")
+              ) {
+                AllHeroes.push("ultra_power_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//ultra_power_hero";
+                n = 1;
+              } else if (
+                rand > 33 &&
+                rand < 44 &&
+                !AllHeroes.includes("medium_hero")
+              ) {
+                AllHeroes.push("medium_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//medium_hero";
+                n = 1;
+              } else if (
+                rand > 44 &&
+                rand < 55 &&
+                !AllHeroes.includes("atal_enemy")
+              ) {
+                AllHeroes.push("atal_enemy");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//atal_enemy";
+                n = 1;
+              } else if (
+                rand > 55 &&
+                rand < 66 &&
+                !AllHeroes.includes("ultimate_hero")
+              ) {
+                AllHeroes.push("ultimate_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//ultimate_hero";
+                n = 1;
+              } else if (
+                rand > 66 &&
+                rand < 77 &&
+                !AllHeroes.includes("basic_hero")
+              ) {
+                AllHeroes.push("basic_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//basic_hero";
+                n = 1;
+              } else if (
+                rand > 77 &&
+                rand < 88 &&
+                !AllHeroes.includes("diamond_hero")
+              ) {
+                AllHeroes.push("diamond_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//diamond_hero";
+                n = 1;
+              } else if (
+                rand > 88 &&
+                rand < 100 &&
+                !AllHeroes.includes("legend_hero")
+              ) {
+                AllHeroes.push("legend_hero");
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+                t = "H//legend_hero";
+                n = 1;
+              } else {
+                t = "piece";
+                n = parseInt(Math.random() * 100);
+              }
+            }
+          }
+          location.href = "unbox.html?t=" + t + "&n=" + n.toString();
+        } else {
+          Swal.fire({
+            title: "No enough pieces",
+            text: "You MUST have more than 100 pieces",
+            icon: "error",
+          });
+        }
+      });
+      document.querySelector(".ultra_box").addEventListener("click", () => {
+        if (pie >= 500) {
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, buy it (500🪙)!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              pie -= 500;
+              save();
+              updateAll();
+              let t = "";
+              let n = 0;
+              let AllHeroes = localStorage.getItem("AllHeroes");
+              if (!AllHeroes) {
+                AllHeroes = ["noob_hero", "power_hero", "baby_atal"];
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+              } else {
+                AllHeroes = JSON.parse(AllHeroes);
+              }
+              const random = parseInt(Math.random() * 100);
+              if (random < 30) {
+                t = "piece";
+                n = 100 + parseInt(Math.random() * 400);
+                pie += n;
+                save();
+              } else if (random > 90) {
+                t = "trophee";
+                n = 5 + parseInt(Math.random() * 5);
+                throphee += n;
+                save();
+              } else {
+                console.log("Piece1");
+                if (rank > 0 && rank < 3) {
+                  const rand = parseInt(Math.random() * 100);
+                  console.log(rand);
+                  if (!AllHeroes.includes("bronze_hero")) {
+                    AllHeroes.push("bronze_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//bronze_hero";
+                    n = 1;
+                  } else {
+                    t = "piece";
+                    n = parseInt(Math.random() * 500);
+                  }
+                } else if (rank > 3 && rank < 6) {
+                  const rand = parseInt(Math.random() * 100);
+                  if (rand < 25 && !AllHeroes.includes("bronze_hero")) {
+                    AllHeroes.push("bronze_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//bronze_hero";
+                    n = 1;
+                  } else if (
+                    rand > 25 &&
+                    rand < 50 &&
+                    !AllHeroes.includes("silver_hero")
+                  ) {
+                    AllHeroes.push("silver_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//silver_hero";
+                    n = 1;
+                  }
+                  if (
+                    rand > 50 &&
+                    rand < 75 &&
+                    !AllHeroes.includes("ultra_power_hero")
+                  ) {
+                    AllHeroes.push("ultra_power_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//ultra_power_hero";
+                    n = 1;
+                  } else if (
+                    rand > 75 &&
+                    rand < 100 &&
+                    !AllHeroes.includes("medium_hero")
+                  ) {
+                    AllHeroes.push("medium_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//medium_hero";
+                    n = 1;
+                  } else {
+                    t = "piece";
+                    n = parseInt(Math.random() * 500);
+                  }
+                } else if (rank > 6 && rank < 9) {
+                  const rand = parseInt(Math.random() * 100);
+                  if (rand < 12.5 && !AllHeroes.includes("bronze_hero")) {
+                    AllHeroes.push("bronze_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//bronze_hero";
+                    n = 1;
+                  } else if (
+                    rand > 12.5 &&
+                    rand < 25 &&
+                    !AllHeroes.includes("silver_hero")
+                  ) {
+                    AllHeroes.push("silver_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//silver_hero";
+                    n = 1;
+                  }
+                  if (
+                    rand > 25 &&
+                    rand < 37.5 &&
+                    !AllHeroes.includes("ultra_power_hero")
+                  ) {
+                    AllHeroes.push("ultra_power_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//ultra_power_hero";
+                    n = 1;
+                  } else if (
+                    rand > 37.5 &&
+                    rand < 50 &&
+                    !AllHeroes.includes("medium_hero")
+                  ) {
+                    AllHeroes.push("medium_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//medium_hero";
+                    n = 1;
+                  } else if (
+                    rand > 50 &&
+                    rand < 62.5 &&
+                    !AllHeroes.includes("atal_enemy")
+                  ) {
+                    AllHeroes.push("atal_enemy");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//atal_enemy";
+                    n = 1;
+                  } else if (
+                    rand > 62.5 &&
+                    rand < 75 &&
+                    !AllHeroes.includes("ultimate_hero")
+                  ) {
+                    AllHeroes.push("ultimate_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//ultimate_hero";
+                    n = 1;
+                  } else if (
+                    rand > 75 &&
+                    rand < 87.5 &&
+                    !AllHeroes.includes("basic_hero")
+                  ) {
+                    AllHeroes.push("basic_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//basic_hero";
+                    n = 1;
+                  } else if (
+                    rand > 87.5 &&
+                    rand < 100 &&
+                    !AllHeroes.includes("diamond_hero")
+                  ) {
+                    AllHeroes.push("diamond_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//diamond_hero";
+                    n = 1;
+                  } else {
+                    t = "piece";
+                    n = parseInt(Math.random() * 500);
+                  }
+                } else if (rank > 8) {
+                  const rand = parseInt(Math.random() * 100);
+                  if (rand < 11 && !AllHeroes.includes("bronze_hero")) {
+                    AllHeroes.push("bronze_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//bronze_hero";
+                    n = 1;
+                  } else if (
+                    rand > 11 &&
+                    rand < 22 &&
+                    !AllHeroes.includes("silver_hero")
+                  ) {
+                    AllHeroes.push("silver_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//silver_hero";
+                    n = 1;
+                  }
+                  if (
+                    rand > 22 &&
+                    rand < 33 &&
+                    !AllHeroes.includes("ultra_power_hero")
+                  ) {
+                    AllHeroes.push("ultra_power_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//ultra_power_hero";
+                    n = 1;
+                  } else if (
+                    rand > 33 &&
+                    rand < 44 &&
+                    !AllHeroes.includes("medium_hero")
+                  ) {
+                    AllHeroes.push("medium_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//medium_hero";
+                    n = 1;
+                  } else if (
+                    rand > 44 &&
+                    rand < 55 &&
+                    !AllHeroes.includes("atal_enemy")
+                  ) {
+                    AllHeroes.push("atal_enemy");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//atal_enemy";
+                    n = 1;
+                  } else if (
+                    rand > 55 &&
+                    rand < 66 &&
+                    !AllHeroes.includes("ultimate_hero")
+                  ) {
+                    AllHeroes.push("ultimate_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//ultimate_hero";
+                    n = 1;
+                  } else if (
+                    rand > 66 &&
+                    rand < 77 &&
+                    !AllHeroes.includes("basic_hero")
+                  ) {
+                    AllHeroes.push("basic_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//basic_hero";
+                    n = 1;
+                  } else if (
+                    rand > 77 &&
+                    rand < 88 &&
+                    !AllHeroes.includes("diamond_hero")
+                  ) {
+                    AllHeroes.push("diamond_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//diamond_hero";
+                    n = 1;
+                  } else if (
+                    rand > 88 &&
+                    rand < 100 &&
+                    !AllHeroes.includes("legend_hero")
+                  ) {
+                    AllHeroes.push("legend_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//legend_hero";
+                    n = 1;
+                  } else {
+                    t = "piece";
+                    n = 100 + parseInt(Math.random() * 500);
+                  }
+                }
+              }
+              location.href = "unbox.html?t=" + t + "&n=" + n.toString();
+            }
+          });
+        } else {
+          Swal.fire({
+            title: "No enough pieces",
+            text: "You MUST have more than 500 pieces",
+            icon: "error",
+          });
+        }
+      });
+      document.querySelector(".legend_box").addEventListener("click", () => {
+        if (pie >= 1000) {
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, buy it (1000🪙)!!!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              pie -= 1000;
+              save();
+              updateAll();
+              let t = "";
+              let n = 0;
+              let AllHeroes = localStorage.getItem("AllHeroes");
+              if (!AllHeroes) {
+                AllHeroes = ["noob_hero", "power_hero", "baby_atal"];
+                localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+              } else {
+                AllHeroes = JSON.parse(AllHeroes);
+              }
+              const random = parseInt(Math.random() * 100);
+              if (random < 30) {
+                t = "piece";
+                n = 300 + parseInt(Math.random() * 700);
+                pie += n;
+                save();
+              } else if (random > 95) {
+                t = "trophee";
+                n = 7 + parseInt(Math.random() * 7);
+                throphee += n;
+                save();
+              } else {
+                if (rank > 0 && rank < 3) {
+                  const rand = parseInt(Math.random() * 100);
+                  console.log(rand);
+                  if (!AllHeroes.includes("bronze_hero")) {
+                    AllHeroes.push("bronze_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//bronze_hero";
+                    n = 1;
+                  } else {
+                    t = "piece";
+                    n = parseInt(Math.random() * 1000);
+                  }
+                } else if (rank > 3 && rank < 6) {
+                  const rand = parseInt(Math.random() * 100);
+                  if (rand < 25 && !AllHeroes.includes("bronze_hero")) {
+                    AllHeroes.push("bronze_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//bronze_hero";
+                    n = 1;
+                  } else if (
+                    rand > 25 &&
+                    rand < 50 &&
+                    !AllHeroes.includes("silver_hero")
+                  ) {
+                    AllHeroes.push("silver_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//silver_hero";
+                    n = 1;
+                  }
+                  if (
+                    rand > 50 &&
+                    rand < 75 &&
+                    !AllHeroes.includes("ultra_power_hero")
+                  ) {
+                    AllHeroes.push("ultra_power_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//ultra_power_hero";
+                    n = 1;
+                  } else if (
+                    rand > 75 &&
+                    rand < 100 &&
+                    !AllHeroes.includes("medium_hero")
+                  ) {
+                    AllHeroes.push("medium_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//medium_hero";
+                    n = 1;
+                  } else {
+                    t = "piece";
+                    n = parseInt(Math.random() * 1000);
+                  }
+                } else if (rank > 6 && rank < 9) {
+                  const rand = parseInt(Math.random() * 100);
+                  if (rand < 12.5 && !AllHeroes.includes("bronze_hero")) {
+                    AllHeroes.push("bronze_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//bronze_hero";
+                    n = 1;
+                  } else if (
+                    rand > 12.5 &&
+                    rand < 25 &&
+                    !AllHeroes.includes("silver_hero")
+                  ) {
+                    AllHeroes.push("silver_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//silver_hero";
+                    n = 1;
+                  }
+                  if (
+                    rand > 25 &&
+                    rand < 37.5 &&
+                    !AllHeroes.includes("ultra_power_hero")
+                  ) {
+                    AllHeroes.push("ultra_power_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//ultra_power_hero";
+                    n = 1;
+                  } else if (
+                    rand > 37.5 &&
+                    rand < 50 &&
+                    !AllHeroes.includes("medium_hero")
+                  ) {
+                    AllHeroes.push("medium_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//medium_hero";
+                    n = 1;
+                  } else if (
+                    rand > 50 &&
+                    rand < 62.5 &&
+                    !AllHeroes.includes("atal_enemy")
+                  ) {
+                    AllHeroes.push("atal_enemy");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//atal_enemy";
+                    n = 1;
+                  } else if (
+                    rand > 62.5 &&
+                    rand < 75 &&
+                    !AllHeroes.includes("ultimate_hero")
+                  ) {
+                    AllHeroes.push("ultimate_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//ultimate_hero";
+                    n = 1;
+                  } else if (
+                    rand > 75 &&
+                    rand < 87.5 &&
+                    !AllHeroes.includes("basic_hero")
+                  ) {
+                    AllHeroes.push("basic_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//basic_hero";
+                    n = 1;
+                  } else if (
+                    rand > 87.5 &&
+                    rand < 100 &&
+                    !AllHeroes.includes("diamond_hero")
+                  ) {
+                    AllHeroes.push("diamond_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//diamond_hero";
+                    n = 1;
+                  } else {
+                    t = "piece";
+                    n = parseInt(Math.random() * 1000);
+                  }
+                } else if (rank > 8) {
+                  const rand = parseInt(Math.random() * 100);
+                  if (rand < 11 && !AllHeroes.includes("bronze_hero")) {
+                    AllHeroes.push("bronze_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//bronze_hero";
+                    n = 1;
+                  } else if (
+                    rand > 11 &&
+                    rand < 22 &&
+                    !AllHeroes.includes("silver_hero")
+                  ) {
+                    AllHeroes.push("silver_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//silver_hero";
+                    n = 1;
+                  }
+                  if (
+                    rand > 22 &&
+                    rand < 33 &&
+                    !AllHeroes.includes("ultra_power_hero")
+                  ) {
+                    AllHeroes.push("ultra_power_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//ultra_power_hero";
+                    n = 1;
+                  } else if (
+                    rand > 33 &&
+                    rand < 44 &&
+                    !AllHeroes.includes("medium_hero")
+                  ) {
+                    AllHeroes.push("medium_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//medium_hero";
+                    n = 1;
+                  } else if (
+                    rand > 44 &&
+                    rand < 55 &&
+                    !AllHeroes.includes("atal_enemy")
+                  ) {
+                    AllHeroes.push("atal_enemy");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//atal_enemy";
+                    n = 1;
+                  } else if (
+                    rand > 55 &&
+                    rand < 66 &&
+                    !AllHeroes.includes("ultimate_hero")
+                  ) {
+                    AllHeroes.push("ultimate_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//ultimate_hero";
+                    n = 1;
+                  } else if (
+                    rand > 66 &&
+                    rand < 77 &&
+                    !AllHeroes.includes("basic_hero")
+                  ) {
+                    AllHeroes.push("basic_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//basic_hero";
+                    n = 1;
+                  } else if (
+                    rand > 77 &&
+                    rand < 88 &&
+                    !AllHeroes.includes("diamond_hero")
+                  ) {
+                    AllHeroes.push("diamond_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//diamond_hero";
+                    n = 1;
+                  } else if (
+                    rand > 88 &&
+                    rand < 100 &&
+                    !AllHeroes.includes("legend_hero")
+                  ) {
+                    AllHeroes.push("legend_hero");
+                    localStorage.setItem(
+                      "AllHeroes",
+                      JSON.stringify(AllHeroes)
+                    );
+                    t = "H//legend_hero";
+                    n = 1;
+                  } else {
+                    t = "piece";
+                    n = 399 + parseInt(Math.random() * 1000);
+                  }
+                }
+              }
+              location.href = "unbox.html?t=" + t + "&n=" + n.toString();
+            }
+          });
+        } else {
+          Swal.fire({
+            title: "No enough pieces",
+            text: "You MUST have more than 1000 pieces",
+            icon: "error",
+          });
+        }
+      });
+      document.querySelector(".bi-sliders").addEventListener("click", () => {
+        const XML = new XMLHttpRequest();
+        XML.open("GET", "cards.json");
+        XML.responseType = "json";
+        XML.onload = () => {
+          const cards = XML.response;
+          let MyHeroes = localStorage.getItem("heroes");
+          let AllHeroes = localStorage.getItem("AllHeroes");
+          let classes = {};
+          if (!AllHeroes) {
+            AllHeroes = ["noob_hero", "power_hero", "baby_atal"];
+            localStorage.setItem("AllHeroes", JSON.stringify(AllHeroes));
+          } else {
+            AllHeroes = JSON.parse(AllHeroes);
+          }
+          if (!MyHeroes) {
+            MyHeroes = ["noob_hero", "power_hero", "baby_atal"];
+            localStorage.setItem("heroes", JSON.stringify(MyHeroes));
+          } else {
+            MyHeroes = JSON.parse(MyHeroes);
+          }
+          classes = {};
+          for (let hero = 0; hero < AllHeroes.length; hero++) {
+            if (AllHeroes[hero]) {
+              const card = cards[AllHeroes[hero]];
+              const CardClass = card["class"];
+              if (!classes["Rank: " + CardClass]) {
+                classes["Rank: " + CardClass] = {};
+              }
+              classes["Rank: " + CardClass][AllHeroes[hero]] = card["name"];
+            }
+          }
+          let first = "";
+          let second = "";
+          let third = "";
+          Swal.fire({
+            title: "Select the first hero",
+            input: "select",
+            inputOptions: classes,
+            inputPlaceholder:
+              'Select first the heroes you want to place as "active"',
+            showCancelButton: true,
+          }).then((result) => {
+            if (result.value) {
+              if (AllHeroes.includes(result.value)) {
+                console.log();
+                delete AllHeroes[AllHeroes.indexOf(result.value)];
+                first = result.value;
+                classes = {};
+                for (let hero = 0; hero < AllHeroes.length; hero++) {
+                  if (AllHeroes[hero]) {
+                    const card = cards[AllHeroes[hero]];
+                    const CardClass = card["class"];
+                    if (!classes["Rank: " + CardClass]) {
+                      classes["Rank: " + CardClass] = {};
+                    }
+                    classes["Rank: " + CardClass][AllHeroes[hero]] =
+                      card["name"];
+                  }
+                }
+                Swal.fire({
+                  title: "Select the second hero",
+                  input: "select",
+                  inputOptions: classes,
+                  inputPlaceholder:
+                    'Select second the heroes you want to place as "active"',
+                  showCancelButton: true,
+                }).then((result) => {
+                  if (result.value) {
+                    if (AllHeroes.includes(result.value)) {
+                      delete AllHeroes[AllHeroes.indexOf(result.value)];
+                      second = result.value;
+                      classes = {};
+                      for (let hero = 0; hero < AllHeroes.length; hero++) {
+                        if (AllHeroes[hero]) {
+                          const card = cards[AllHeroes[hero]];
+                          const CardClass = card["class"];
+                          if (!classes["Rank: " + CardClass]) {
+                            classes["Rank: " + CardClass] = {};
+                          }
+                          classes["Rank: " + CardClass][AllHeroes[hero]] =
+                            card["name"];
+                        }
+                      }
+
+                      Swal.fire({
+                        title: "Select the third hero",
+                        input: "select",
+                        inputOptions: classes,
+                        inputPlaceholder:
+                          'Select third the heroes you want to place as "active"',
+                        showCancelButton: true,
+                      }).then((result) => {
+                        if (result.value) {
+                          if (AllHeroes.includes(result.value)) {
+                            third = result.value;
+                            MyHeroes = [first, second, third];
+                            localStorage.setItem(
+                              "heroes",
+                              JSON.stringify(MyHeroes)
+                            );
+                            Swal.fire(
+                              `Your squad has been updated to: 1 ${first}, 2 ${second}, 3 ${third}, `
+                            );
+                          }
+                        }
+                      });
+                    }
+                  }
+                });
+              }
+            }
+          });
+        };
+        XML.send();
+      });
+    </script>
+  </body>
+</html>
